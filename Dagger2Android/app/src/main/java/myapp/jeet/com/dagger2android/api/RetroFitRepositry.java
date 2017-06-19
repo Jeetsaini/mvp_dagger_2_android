@@ -7,6 +7,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import myapp.jeet.com.dagger2android.models.RecipeDetail;
+import myapp.jeet.com.dagger2android.models.RecipeDetailItem;
 import myapp.jeet.com.dagger2android.models.SearchResponse;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -67,6 +69,31 @@ public class RetroFitRepositry {
 					public void onError(Throwable e) {
 						e.printStackTrace();
 
+					}
+				});
+		return subscription;
+	}
+
+	public Subscription getRecipe(String recipeId, APICallbacks<RecipeDetailItem> recipeDetailItemAPICallbacks)
+	{
+		RetrofitServiceInterface retrofitServiceInterface=createRetrofitClient();
+		Subscription subscription=retrofitServiceInterface.callGetRecipeDetail(ApiConstants.APIKEY,recipeId)
+				.subscribeOn(Schedulers.io())
+				.observeOn(AndroidSchedulers.mainThread())
+				.subscribe(new Observer<RecipeDetailItem>() {
+					@Override
+					public void onCompleted() {
+
+					}
+
+					@Override
+					public void onError(Throwable e) {
+                     e.printStackTrace();
+					}
+
+					@Override
+					public void onNext(RecipeDetailItem recipeDetail) {
+                        recipeDetailItemAPICallbacks.onSuccess(recipeDetail);
 					}
 				});
 		return subscription;

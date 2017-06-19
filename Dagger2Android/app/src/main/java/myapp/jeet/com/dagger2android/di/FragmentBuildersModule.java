@@ -21,11 +21,12 @@ package myapp.jeet.com.dagger2android.di;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 import myapp.jeet.com.dagger2android.view.MyFragment;
+import myapp.jeet.com.dagger2android.view.RecipeDetailFragment;
 
 @Module
 public abstract class FragmentBuildersModule {
     @ContributesAndroidInjector()
-    abstract MyFragment contributeMyFragment();
+    abstract RecipeDetailFragment contributeMyFragment();
 
 
 }
