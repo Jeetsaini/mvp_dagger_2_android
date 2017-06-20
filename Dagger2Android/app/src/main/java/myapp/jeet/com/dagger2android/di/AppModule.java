@@ -10,4 +10,5 @@ import dagger.Module;
 @Module
 public class AppModule {
 
+	// Create or provide your dependency like Retrofit client and Shared Prefs
 }

@@ -12,6 +12,8 @@ import dagger.android.AndroidInjectionModule;
  * Created by Admin on 6/15/2017.
  */
 
+
+
 @Singleton
 @Component(modules ={AndroidInjectionModule.class,
 		AppModule.class,MainActivityModule.class,RecipeDetailModule.class})

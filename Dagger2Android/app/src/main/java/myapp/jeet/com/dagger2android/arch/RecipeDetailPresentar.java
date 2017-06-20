@@ -29,6 +29,7 @@ public class RecipeDetailPresentar {
 
 	public void getData(String recipeId)
 	{
+		mDetailView.showLoading();
 		Subscription subscription=mRetroFitRepositry.getRecipe(recipeId, new APICallbacks<RecipeDetailItem>() {
 			@Override
 			public void onSuccess(RecipeDetailItem response) {
